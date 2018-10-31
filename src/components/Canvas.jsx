@@ -21,6 +21,15 @@ const Canvas = (props) => {
               window.innerWidth,
               gameHeight];
 
+  const lives = [];
+  for (let i = 0; i < props.gameState.lives; i++) {
+    const heartPosition = {
+      x: -180 - (i * 70),
+      y: 35,
+    };
+    lives.push(<Heart key={i} position={heartPosition}/>);
+  }
+
   return (
     <svg
       id="aliens-go-home-canvas"
@@ -47,7 +56,6 @@ const Canvas = (props) => {
       <CannonPipe rotation={props.angle} />
       <CannonBase />
       <CurrentScore score={15} />
-      <Heart position={{x: -300, y: 35}} />
 
       {! props.gameState.started &&
         <g>
@@ -63,6 +71,8 @@ const Canvas = (props) => {
           position={flyingObject.position}
         />
       ))}
+
+      {lives}
 
     </svg>
   );
