@@ -18,6 +18,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.shoot = this.shoot.bind(this);
+    this.socket = null;
+    this.currentPlayer = null;
   }
 
   componentDidMount() {
